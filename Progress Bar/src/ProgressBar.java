@@ -12,26 +12,21 @@ public class ProgressBar extends JFrame {
         setSize(400, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
         setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));  
-        
-        // Create progress bar
+    
         progressBar = new JProgressBar(0, 100);
         progressBar.setPreferredSize(new Dimension(300, 30));
-        progressBar.setStringPainted(true); // Show percentage text
+        progressBar.setStringPainted(true); 
         progressBar.setValue(0);
         
-        // Create panel for buttons
         JPanel buttonPanel = new JPanel();
         
-        // Create next button
         nextButton = new JButton("Increase (+10%)");
         nextButton.addActionListener(e -> advanceProgress());
         
-        // Create previous button
         prevButton = new JButton("Decrease (-10%)");
         prevButton.addActionListener(e -> decreaseProgress());
-        prevButton.setEnabled(false); // Disable at start since progress = 0
+        prevButton.setEnabled(false); 
         
-        // Add components
         buttonPanel.add(prevButton);
         buttonPanel.add(nextButton);
         
@@ -44,10 +39,9 @@ public class ProgressBar extends JFrame {
     
     private void advanceProgress() {
         if (progress < 100) {
-            progress += 10; // Increase by 10% each click
+            progress += 10; 
             progressBar.setValue(progress);
             
-            // Enable decrease button when progress > 0
             prevButton.setEnabled(true);
             
             if (progress >= 100) {
@@ -59,13 +53,11 @@ public class ProgressBar extends JFrame {
     
     private void decreaseProgress() {
         if (progress > 0) {
-            progress -= 10; // Decrease by 10% each click
+            progress -= 10; 
             progressBar.setValue(progress);
             
-            // Enable next button when decreasing from 100%
             nextButton.setEnabled(true);
             
-            // Disable decrease button when progress = 0
             if (progress <= 0) {
                 prevButton.setEnabled(false);
             }
